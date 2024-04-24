@@ -8,13 +8,13 @@
 ///
 /// To use this library in your code:
 /// ```
-/// import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+/// import 'package:grouped_list/sticky_grouped_list.dart';
 /// ```
-library sticky_grouped_list;
+library grouped_list;
 
-export 'src/sticky_grouped_list.dart'
-    show StickyGroupedListView, GroupedItemScrollController;
-export 'src/sticky_grouped_list_order.dart' show StickyGroupedListOrder;
+export 'src/grouped_list.dart'
+    show GroupedListView, GroupedItemScrollController;
+export 'src/grouped_list_order.dart' show GroupedListOrder;
 
 export 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemPositionsListener;

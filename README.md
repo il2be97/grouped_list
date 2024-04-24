@@ -25,7 +25,7 @@ A `ListView` in which list items can be grouped to sections. Based on [scrollabl
  In your dart file, import the library:
 
  ```Dart
-import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import 'package:grouped_list/sticky_grouped_list.dart';
  ``` 
  
  Create a `StickyGroupedListView` Widget:

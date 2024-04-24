@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 /// This example shows the usage of the [StickyGroupedListView] to create an
 /// chat-like application where the elements are grouped by days and the
@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
           children: [
             SizedBox(
               height: 700,
-              child: StickyGroupedListView<Element, DateTime>(
+              child: GroupedListView<Element, DateTime>(
                 elements: _elements,
-                order: StickyGroupedListOrder.DESC,
+                order: GroupedListOrder.DESC,
                 reverse: true,
                 groupBy: (Element element) => DateTime(
                   element.date.year,

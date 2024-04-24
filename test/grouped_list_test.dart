@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 final List _elements = [
   {'name': 'John', 'group': 'Team A'},
@@ -20,10 +20,10 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: StickyGroupedListView(
+          body: GroupedListView(
             groupBy: (dynamic element) => element['group'],
             elements: _elements,
-            order: StickyGroupedListOrder.DESC,
+            order: GroupedListOrder.DESC,
             groupSeparatorBuilder: buildGroupSeperator,
             itemBuilder: (context, dynamic element) => Text(element['name']),
           ),
@@ -42,7 +42,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: StickyGroupedListView(
+          body: GroupedListView(
             groupBy: (dynamic element) => element['group'],
             elements: const [],
             groupSeparatorBuilder: buildGroupSeperator,
@@ -58,7 +58,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: StickyGroupedListView(
+          body: GroupedListView(
             groupBy: (dynamic element) => element['group'],
             elements: _elements,
             groupSeparatorBuilder: buildGroupSeperator,

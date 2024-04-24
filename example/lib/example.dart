@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 /// This example shows the basic usage of the [StickyGroupedListView].
 void main() => runApp(const MyApp());
@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Grouped List View Example'),
         ),
-        body: StickyGroupedListView<Element, DateTime>(
+        body: GroupedListView<Element, DateTime>(
           elements: _elements,
-          order: StickyGroupedListOrder.ASC,
+          order: GroupedListOrder.ASC,
           groupBy: (Element element) => DateTime(
             element.date.year,
             element.date.month,

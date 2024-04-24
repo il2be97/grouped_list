@@ -1,5 +1,5 @@
 name: example
-description: sticky_grouped_list example.
+description: grouped_list example.
 publish_to: 'none' 
 version: 0.0.1
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sticky_grouped_list:
+  grouped_list:
     path: ../
   intl: ^0.17.0
 

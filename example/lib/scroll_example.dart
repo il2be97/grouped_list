@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 /// This example shows the usage of the [StickyGroupedListView] with a
 /// [GroupedItemScrollController]. The list shows 100 elements divided in ten
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Grouped List View Example'),
         ),
-        body: StickyGroupedListView<Element, int>(
+        body: GroupedListView<Element, int>(
           elements: _elements,
           groupBy: (Element element) => element.group,
           elementIdentifier: (Element element) => element.id,
