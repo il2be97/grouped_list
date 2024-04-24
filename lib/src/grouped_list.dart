@@ -221,10 +221,10 @@ class GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
   @override
   void didUpdateWidget(GroupedListView<T, E> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.itemScrollController?._GroupedListViewState == this) {
+    if (oldWidget.itemScrollController?._groupedListViewState == this) {
       oldWidget.itemScrollController?._detach();
     }
-    if (widget.itemScrollController?._GroupedListViewState != this) {
+    if (widget.itemScrollController?._groupedListViewState != this) {
       widget.itemScrollController?._detach();
       widget.itemScrollController?._attach(this);
     }
@@ -233,11 +233,7 @@ class GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
   @override
   Widget build(BuildContext context) {
     sortedElements = _sortElements();
-
-    int? hiddenIndex;
-    if (widget.stickHeader) {
-      hiddenIndex = widget.reverse ? sortedElements.length * 2 - 1 : 0;
-    }
+    var hiddenIndex = widget.reverse ? sortedElements.length * 2 - 1 : 0;
 
     _isSeparator = widget.reverse ? (int i) => i.isOdd : (int i) => i.isEven;
 
@@ -398,13 +394,13 @@ class GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
 ///
 /// See [ItemScrollController].
 class GroupedItemScrollController extends ItemScrollController {
-  GroupedListViewState? _GroupedListViewState;
+  GroupedListViewState? _groupedListViewState;
 
   /// Whether any [GroupedListView] objects are attached this object.
   ///
   /// If `false`, then [jumpTo] and [scrollTo] must not be called.
   @override
-  bool get isAttached => _GroupedListViewState != null;
+  bool get isAttached => _groupedListViewState != null;
 
   /// Jumps to the element at [index]. The element will be placed under the
   /// group header.
@@ -418,7 +414,7 @@ class GroupedItemScrollController extends ItemScrollController {
     bool automaticAlignment = true,
   }) {
     if (automaticAlignment) {
-      alignment = _GroupedListViewState!.headerDimension ?? alignment;
+      alignment = _groupedListViewState!.headerDimension ?? alignment;
     }
     return super.jumpTo(index: index * 2 + 1, alignment: alignment);
   }
@@ -438,7 +434,7 @@ class GroupedItemScrollController extends ItemScrollController {
     List<double> opacityAnimationWeights = const [40, 20, 40],
   }) {
     if (automaticAlignment) {
-      alignment = _GroupedListViewState!.headerDimension ?? alignment;
+      alignment = _groupedListViewState!.headerDimension ?? alignment;
     }
     return super.scrollTo(
       index: index * 2 + 1,
@@ -480,8 +476,8 @@ class GroupedItemScrollController extends ItemScrollController {
   }
 
   int _findIndexByIdentifier(dynamic identifier) {
-    var elements = _GroupedListViewState!.sortedElements;
-    var identify = _GroupedListViewState!.getIdentifier;
+    var elements = _groupedListViewState!.sortedElements;
+    var identify = _groupedListViewState!.getIdentifier;
 
     for (int i = 0; i < elements.length; i++) {
       if (identify(elements[i]) == identifier) {
@@ -491,12 +487,12 @@ class GroupedItemScrollController extends ItemScrollController {
     return -1;
   }
 
-  void _attach(GroupedListViewState GroupedListViewState) {
-    assert(_GroupedListViewState == null);
-    _GroupedListViewState = GroupedListViewState;
+  void _attach(GroupedListViewState groupedListViewState) {
+    assert(_groupedListViewState == null);
+    _groupedListViewState = groupedListViewState;
   }
 
   void _detach() {
-    _GroupedListViewState = null;
+    _groupedListViewState = null;
   }
 }
