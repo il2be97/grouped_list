@@ -86,6 +86,9 @@ class StickyGroupedListView<T, E> extends StatefulWidget {
   /// The amount of space by which to inset the children.
   final EdgeInsets? padding;
 
+  /// Identify if need stik header.
+  final bool stickHeader;
+
   /// Whether the view scrolls in the reading direction.
   ///
   /// Defaults to false.
@@ -166,6 +169,7 @@ class StickyGroupedListView<T, E> extends StatefulWidget {
     this.initialAlignment = 0,
     this.initialScrollIndex = 0,
     this.shrinkWrap = false,
+    this.stickHeader = false,
   }) : assert(itemBuilder != null || indexedItemBuilder != null);
 
   @override
@@ -278,11 +282,12 @@ class StickyGroupedListViewState<T, E>
             return _buildItem(context, actualIndex);
           },
         ),
-        StreamBuilder<int>(
-          stream: _streamController.stream,
-          initialData: _topElementIndex,
-          builder: (_, snapshot) => _showFixedGroupHeader(snapshot.data!),
-        )
+        if (widget.stickHeader)
+          StreamBuilder<int>(
+            stream: _streamController.stream,
+            initialData: _topElementIndex,
+            builder: (_, snapshot) => _showFixedGroupHeader(snapshot.data!),
+          )
       ],
     );
   }
