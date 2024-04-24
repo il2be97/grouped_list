@@ -263,7 +263,7 @@ class GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
 
             if (index == hiddenIndex) {
               return Opacity(
-                opacity: 0,
+                opacity: widget.stickHeader ? 0 : 1,
                 child:
                     widget.groupSeparatorBuilder(sortedElements[actualIndex]),
               );
